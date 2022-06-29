@@ -526,9 +526,9 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        StreamBuilder<AdsRecord>(
-                                          stream: AdsRecord.getDocument(
-                                              listViewAdsRecord!.reference),
+                                        StreamBuilder<QuizzesRecord>(
+                                          stream: QuizzesRecord.getDocument(
+                                              listViewAdsRecord!.refQuiz!),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -543,7 +543,7 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                                                 ),
                                               );
                                             }
-                                            final editAdRAdsRecord =
+                                            final editAdRQuizzesRecord =
                                                 snapshot.data!;
                                             return FlutterFlowIconButton(
                                               borderColor: Colors.transparent,
@@ -565,6 +565,10 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                                                           listViewAdsRecord,
                                                       recordIssue:
                                                           widget.recIssue,
+                                                      recCatalog:
+                                                          widget.recCatalog,
+                                                      recQuiz:
+                                                          editAdRQuizzesRecord,
                                                     ),
                                                   ),
                                                 );

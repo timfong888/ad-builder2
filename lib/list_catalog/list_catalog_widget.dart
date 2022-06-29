@@ -380,7 +380,7 @@ class _ListCatalogWidgetState extends State<ListCatalogWidget> {
                                       ),
                                     ),
                                     Container(
-                                      width: 100,
+                                      width: MediaQuery.of(context).size.width,
                                       height: 100,
                                       decoration: BoxDecoration(),
                                       child: Row(
