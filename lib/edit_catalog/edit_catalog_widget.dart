@@ -1,11 +1,9 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
 import '../list_catalog/list_catalog_widget.dart';
 import '../login/login_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -36,7 +34,6 @@ class _EditCatalogWidgetState extends State<EditCatalogWidget> {
   TextEditingController? endDateFieldController;
   TextEditingController? summaryFieldController;
   TextEditingController? titleFieldController;
-  String uploadedFileUrl = '';
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -502,76 +499,6 @@ class _EditCatalogWidgetState extends State<EditCatalogWidget> {
                                               height: 100,
                                               fit: BoxFit.cover,
                                             ),
-                                            FFButtonWidget(
-                                              onPressed: () async {
-                                                final selectedMedia =
-                                                    await selectMediaWithSourceBottomSheet(
-                                                  context: context,
-                                                  allowPhoto: true,
-                                                );
-                                                if (selectedMedia != null &&
-                                                    selectedMedia.every((m) =>
-                                                        validateFileFormat(
-                                                            m.storagePath,
-                                                            context))) {
-                                                  showUploadMessage(
-                                                    context,
-                                                    'Uploading file...',
-                                                    showLoading: true,
-                                                  );
-                                                  final downloadUrls = (await Future
-                                                          .wait(selectedMedia
-                                                              .map((m) async =>
-                                                                  await uploadData(
-                                                                      m.storagePath,
-                                                                      m.bytes))))
-                                                      .where((u) => u != null)
-                                                      .map((u) => u!)
-                                                      .toList();
-                                                  ScaffoldMessenger.of(context)
-                                                      .hideCurrentSnackBar();
-                                                  if (downloadUrls != null &&
-                                                      downloadUrls.length ==
-                                                          selectedMedia
-                                                              .length) {
-                                                    setState(() =>
-                                                        uploadedFileUrl =
-                                                            downloadUrls.first);
-                                                    showUploadMessage(
-                                                      context,
-                                                      'Success!',
-                                                    );
-                                                  } else {
-                                                    showUploadMessage(
-                                                      context,
-                                                      'Failed to upload media',
-                                                    );
-                                                    return;
-                                                  }
-                                                }
-                                              },
-                                              text: 'Upload Image',
-                                              options: FFButtonOptions(
-                                                width: 400,
-                                                height: 40,
-                                                color: Color(0xFF0081A7),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: Colors.white,
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1,
-                                                ),
-                                                borderRadius: 12,
-                                              ),
-                                            ),
                                             Text(
                                               functions.logoUrlToString(
                                                   editCatalogCatalogRecord!
@@ -629,7 +556,6 @@ class _EditCatalogWidgetState extends State<EditCatalogWidget> {
                                                           .text,
                                                   endDate: widget
                                                       .recCatalog!.endDate,
-                                                  logoUrl: uploadedFileUrl,
                                                 );
                                                 await editCatalogCatalogRecord!
                                                     .reference

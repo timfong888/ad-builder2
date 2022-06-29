@@ -2,6 +2,7 @@ import '../backend/backend.dart';
 import '../edit_catalog/edit_catalog_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../list_issues/list_issues_widget.dart';
 import 'package:flutter/material.dart';
@@ -185,12 +186,12 @@ class _ListCatalogWidgetState extends State<ListCatalogWidget> {
                                 ),
                               ),
                               Container(
-                                width: 200,
+                                width: 300,
                                 height: 100,
                                 decoration: BoxDecoration(),
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Text(
-                                  'Edit Catalog | List Issues',
+                                  'Edit Catalog | List Issues  |   Activate',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -382,28 +383,63 @@ class _ListCatalogWidgetState extends State<ListCatalogWidget> {
                                       width: 100,
                                       height: 100,
                                       decoration: BoxDecoration(),
-                                      child: FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30,
-                                        borderWidth: 1,
-                                        buttonSize: 60,
-                                        icon: Icon(
-                                          Icons.list_sharp,
-                                          color: Color(0xFFFF9D2E),
-                                          size: 30,
-                                        ),
-                                        onPressed: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ListIssuesWidget(
-                                                recCatalog:
-                                                    listViewCatalogRecord,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 30,
+                                            borderWidth: 1,
+                                            buttonSize: 60,
+                                            icon: Icon(
+                                              Icons.list_sharp,
+                                              color: Color(0xFFFF9D2E),
+                                              size: 30,
+                                            ),
+                                            onPressed: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ListIssuesWidget(
+                                                    recCatalog:
+                                                        listViewCatalogRecord,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    50, 0, 0, 0),
+                                            child: ToggleIcon(
+                                              onPressed: () async {
+                                                final catalogUpdateData =
+                                                    createCatalogRecordData(
+                                                  active:
+                                                      !listViewCatalogRecord!
+                                                          .active!,
+                                                );
+                                                await listViewCatalogRecord!
+                                                    .reference
+                                                    .update(catalogUpdateData);
+                                              },
+                                              value: listViewCatalogRecord!
+                                                  .active!,
+                                              onIcon: Icon(
+                                                Icons.toggle_on,
+                                                color: Color(0xFF07CE07),
+                                                size: 25,
+                                              ),
+                                              offIcon: Icon(
+                                                Icons.toggle_off,
+                                                color: Color(0xFFDE0D0D),
+                                                size: 25,
                                               ),
                                             ),
-                                          );
-                                        },
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
