@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../create_quiz/create_quiz_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -228,8 +229,17 @@ class _CreateAdWidgetState extends State<CreateAdWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CreateQuizWidget(
+                                    recordAd: widget.recAd,
+                                    recIssue: widget.recIssue,
+                                    recCatalog: widget.recCatalog,
+                                  ),
+                                ),
+                              );
                             },
                             text: 'Build Quiz',
                             options: FFButtonOptions(
@@ -269,8 +279,18 @@ class _CreateAdWidgetState extends State<CreateAdWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CreateAdWidget(
+                                    recCatalog: widget.recCatalog,
+                                    recIssue: widget.recIssue,
+                                    recQuiz: widget.recQuiz,
+                                    recAd: widget.recAd,
+                                  ),
+                                ),
+                              );
                             },
                             text: 'Build Argument',
                             options: FFButtonOptions(

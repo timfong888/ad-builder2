@@ -69,166 +69,180 @@ class _DisplayFullAdWidgetState extends State<DisplayFullAdWidget> {
                     decoration: BoxDecoration(
                       color: Color(0xFF0081A7),
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ListCatalogWidget(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ListCatalogWidget(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Catalog Lists',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFFFDFCDC),
+                                      ),
                                 ),
-                              );
-                            },
-                            child: Text(
-                              'Catalog Lists',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFFFDFCDC),
-                                  ),
-                            ),
-                          ),
-                          Text(
-                            '>  Catalog >',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
+                              ),
+                              Text(
+                                '>  Catalog >',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
                                       fontFamily: 'Poppins',
                                       color: Color(0xFFFDFCDC),
                                     ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ListIssuesWidget(
-                                    recCatalog: widget.recCatalog,
-                                  ),
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ListIssuesWidget(
+                                        recCatalog: widget.recCatalog,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  '    List Issues >',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFFFDFCDC),
+                                      ),
                                 ),
-                              );
-                            },
-                            child: Text(
-                              '    List Issues >',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFFFDFCDC),
-                                  ),
-                            ),
-                          ),
-                          Text(
-                            widget.recIssue!.ballotID!,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ListofAdsWidget(
+                                        recIssue: widget.recIssue,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  ' >    List Ads >',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                ),
+                              ),
+                              Text(
+                                '     View Ad >',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBtnText,
-                                      fontWeight: FontWeight.normal,
                                     ),
-                          ),
-                          Text(
-                            widget.recIssue!.title!,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBtnText,
-                                      fontWeight: FontWeight.w300,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => EditQuizWidget(
+                                        recordAd: widget.recAd,
+                                        recQuiz: widget.recQuiz,
+                                        recIssue: widget.recIssue,
+                                        recCatalog: widget.recCatalog,
+                                      ),
                                     ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ListofAdsWidget(
-                                    recIssue: widget.recIssue,
-                                  ),
+                                  );
+                                },
+                                child: Text(
+                                  '    ...Edit Quiz',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .lineColor,
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.italic,
+                                      ),
                                 ),
-                              );
-                            },
-                            child: Text(
-                              ' >    List Ads >',
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => EditAdWidget(
+                                        recordAd: widget.recAd,
+                                        recordIssue: widget.recIssue,
+                                        recCatalog: widget.recCatalog,
+                                        recQuiz: widget.recQuiz,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  '  ...Edit Argument',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .lineColor,
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FontStyle.italic,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              widget.recIssue!.ballotID!,
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBtnText,
-                                  ),
-                            ),
-                          ),
-                          Text(
-                            '     View Ad >',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBtnText,
-                                    ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => EditQuizWidget(
-                                    recordAd: widget.recAd,
-                                    recQuiz: widget.recQuiz,
-                                    recIssue: widget.recIssue,
-                                    recCatalog: widget.recCatalog,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              '    ...Edit Quiz',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FontStyle.italic,
-                                  ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => EditAdWidget(
-                                    recordAd: widget.recAd,
-                                    recordIssue: widget.recIssue,
-                                    recCatalog: widget.recCatalog,
-                                    recQuiz: widget.recQuiz,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              '  ...Edit Argument',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color:
-                                        FlutterFlowTheme.of(context).lineColor,
                                     fontWeight: FontWeight.normal,
-                                    fontStyle: FontStyle.italic,
                                   ),
                             ),
-                          ),
-                        ],
-                      ),
+                            Text(
+                              widget.recIssue!.title!,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   Expanded(

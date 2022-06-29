@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../create_ad/create_ad_widget.dart';
+import '../create_quiz/create_quiz_widget.dart';
 import '../display_full_ad/display_full_ad_widget.dart';
 import '../edit_ad/edit_ad_widget.dart';
 import '../edit_quiz/edit_quiz_widget.dart';
@@ -13,6 +14,7 @@ import '../list_catalog/list_catalog_widget.dart';
 import '../list_issues/list_issues_widget.dart';
 import '../login/login_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ListofAdsWidget extends StatefulWidget {
@@ -50,161 +52,216 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                 decoration: BoxDecoration(
                   color: Color(0xFF0081A7),
                 ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      InkWell(
-                        onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ListCatalogWidget(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Catalog Lists',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFFFDFCDC),
-                                  ),
-                        ),
-                      ),
-                      Text(
-                        '>  Catalog',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFFFDFCDC),
-                            ),
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ListIssuesWidget(
-                                recCatalog: widget.recCatalog,
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          '>    List Issues >   ',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFFFDFCDC),
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                        child: Text(
-                          widget.recIssue!.ballotID!,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                fontSize: 12,
-                                fontWeight: FontWeight.normal,
-                              ),
-                        ),
-                      ),
-                      Text(
-                        widget.recIssue!.title!,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color:
-                                  FlutterFlowTheme.of(context).primaryBtnText,
-                              fontSize: 10,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                      Text(
-                        '   > List Ads',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color:
-                                  FlutterFlowTheme.of(context).primaryBtnText,
-                            ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
-                        child: Text(
-                          'Create Ads  >     Create Quiz >     Create Argument >',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context).lineColor,
-                                fontWeight: FontWeight.w300,
-                              ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(55, 0, 0, 0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CreateAdWidget(
-                                  recCatalog: widget.recCatalog,
-                                  recIssue: widget.recIssue,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ListCatalogWidget(),
                                 ),
-                              ),
-                            );
-                          },
-                          text: 'Create Ad',
-                          options: FFButtonOptions(
-                            width: 130,
-                            height: 40,
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
+                              );
+                            },
+                            child: Text(
+                              'Catalog Lists',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFFFDFCDC),
+                                  ),
                             ),
-                            borderRadius: 12,
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(300, 0, 0, 0),
-                        child: InkWell(
-                          onTap: () async {
-                            await signOut();
-                            await Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LoginWidget(),
-                              ),
-                              (r) => false,
-                            );
-                          },
-                          child: Text(
-                            'Logout',
+                          Text(
+                            '>  Catalog',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFFFDFCDC),
+                                    ),
+                          ),
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ListIssuesWidget(
+                                    recCatalog: widget.recCatalog,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              '>    List Issues >   ',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFFFDFCDC),
+                                  ),
+                            ),
+                          ),
+                          Text(
+                            '   List Ads >',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBtnText,
-                                      fontWeight: FontWeight.w300,
                                     ),
                           ),
-                        ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
+                            child: Text(
+                              'Create Ads  >     Create Quiz >     Create Argument >',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color:
+                                        FlutterFlowTheme.of(context).lineColor,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(55, 0, 0, 0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CreateAdWidget(
+                                      recCatalog: widget.recCatalog,
+                                      recIssue: widget.recIssue,
+                                    ),
+                                  ),
+                                );
+                              },
+                              text: 'Create Ad (beta)',
+                              options: FFButtonOptions(
+                                width: 200,
+                                height: 40,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: 12,
+                              ),
+                            ),
+                          ),
+                          FFButtonWidget(
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CreateQuizWidget(
+                                    recIssue: widget.recIssue,
+                                    recCatalog: widget.recCatalog,
+                                  ),
+                                ),
+                              );
+                            },
+                            text: 'Create Quiz',
+                            options: FFButtonOptions(
+                              width: 130,
+                              height: 40,
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 12,
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(300, 0, 0, 0),
+                            child: InkWell(
+                              onTap: () async {
+                                await signOut();
+                                await Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginWidget(),
+                                  ),
+                                  (r) => false,
+                                );
+                              },
+                              child: Text(
+                                'Logout',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                            child: Text(
+                              widget.recIssue!.ballotID!,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
+                          ),
+                          Text(
+                            widget.recIssue!.title!,
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -648,6 +705,24 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                                               size: 25,
                                             ),
                                           ),
+                                        ),
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30,
+                                          borderWidth: 1,
+                                          buttonSize: 60,
+                                          icon: FaIcon(
+                                            FontAwesomeIcons.solidTrashAlt,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 15,
+                                          ),
+                                          onPressed: () async {
+                                            await listViewAdsRecord!.reference
+                                                .delete();
+                                            await listViewAdsRecord!.refQuiz!
+                                                .delete();
+                                          },
                                         ),
                                       ],
                                     ),
