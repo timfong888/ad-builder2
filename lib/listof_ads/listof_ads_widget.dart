@@ -13,7 +13,9 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../list_catalog/list_catalog_widget.dart';
 import '../list_issues/list_issues_widget.dart';
 import '../login/login_widget.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,7 +34,17 @@ class ListofAdsWidget extends StatefulWidget {
 }
 
 class _ListofAdsWidgetState extends State<ListofAdsWidget> {
+  String? packageString;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      packageString = await actions.getPackageInfo();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +211,7 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(300, 0, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
                             child: InkWell(
                               onTap: () async {
                                 await signOut();
@@ -257,6 +269,21 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(500, 0, 0, 0),
+                            child: Text(
+                              FFAppState().localPackageString!,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFFFDFCDC),
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
                           ),
                         ],
                       ),

@@ -40,8 +40,6 @@ class _EditCatalogWidgetState extends State<EditCatalogWidget> {
   @override
   void initState() {
     super.initState();
-    endDateFieldController =
-        TextEditingController(text: dateTimeFormat('MMMMEEEEd', datePicked));
     summaryFieldController =
         TextEditingController(text: widget.recCatalog!.summary);
     titleFieldController =
@@ -397,7 +395,13 @@ class _EditCatalogWidgetState extends State<EditCatalogWidget> {
                                           ),
                                         ),
                                         child: TextFormField(
-                                          controller: endDateFieldController,
+                                          controller: endDateFieldController ??=
+                                              TextEditingController(
+                                            text: dateTimeFormat(
+                                                'MMMMEEEEd',
+                                                editCatalogCatalogRecord!
+                                                    .endDate),
+                                          ),
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
                                             'endDateFieldController',

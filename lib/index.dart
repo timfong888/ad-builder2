@@ -1,8 +1,8 @@
 // Export pages
 export 'login/login_widget.dart' show LoginWidget;
 export 'list_catalog/list_catalog_widget.dart' show ListCatalogWidget;
-export 'edit_catalog/edit_catalog_widget.dart' show EditCatalogWidget;
 export 'list_issues/list_issues_widget.dart' show ListIssuesWidget;
+export 'edit_catalog/edit_catalog_widget.dart' show EditCatalogWidget;
 export 'create_issue/create_issue_widget.dart' show CreateIssueWidget;
 export 'edit_issue/edit_issue_widget.dart' show EditIssueWidget;
 export 'listof_ads/listof_ads_widget.dart' show ListofAdsWidget;

@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../create_argument/create_argument_widget.dart';
 import '../create_quiz/create_quiz_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -283,11 +284,10 @@ class _CreateAdWidgetState extends State<CreateAdWidget> {
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CreateAdWidget(
+                                  builder: (context) => CreateArgumentWidget(
                                     recCatalog: widget.recCatalog,
-                                    recIssue: widget.recIssue,
                                     recQuiz: widget.recQuiz,
-                                    recAd: widget.recAd,
+                                    recordIssue: widget.recIssue,
                                   ),
                                 ),
                               );

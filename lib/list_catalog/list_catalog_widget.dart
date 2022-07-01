@@ -5,7 +5,9 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../list_issues/list_issues_widget.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ListCatalogWidget extends StatefulWidget {
@@ -21,7 +23,18 @@ class ListCatalogWidget extends StatefulWidget {
 }
 
 class _ListCatalogWidgetState extends State<ListCatalogWidget> {
+  String? packageString;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      packageString = await actions.getPackageInfo();
+      setState(() => FFAppState().localPackageString = packageString!);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +51,23 @@ class _ListCatalogWidgetState extends State<ListCatalogWidget> {
                 fontSize: 22,
               ),
         ),
-        actions: [],
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
+            child: Text(
+              valueOrDefault<String>(
+                FFAppState().localPackageString!,
+                'defaultValue',
+              ),
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFFFDFCDC),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w300,
+                  ),
+            ),
+          ),
+        ],
         centerTitle: false,
         elevation: 2,
       ),
