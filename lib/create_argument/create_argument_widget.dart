@@ -65,133 +65,146 @@ class _CreateArgumentWidgetState extends State<CreateArgumentWidget> {
                   decoration: BoxDecoration(
                     color: Color(0xFF0081A7),
                   ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        InkWell(
-                          onTap: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ListCatalogWidget(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            'Catalog Lists',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ListCatalogWidget(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Catalog Lists',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
                                       fontFamily: 'Poppins',
                                       color: Color(0xFFFDFCDC),
                                     ),
-                          ),
-                        ),
-                        Text(
-                          '>  Catalog',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              ),
+                            ),
+                            Text(
+                              '>  Catalog',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFFFDFCDC),
                                   ),
-                        ),
-                        InkWell(
-                          onTap: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ListIssuesWidget(
-                                  recCatalog: widget.recCatalog,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            '> List Issues',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ListIssuesWidget(
+                                      recCatalog: widget.recCatalog,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                '> List Issues',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
                                       fontFamily: 'Poppins',
                                       color: Color(0xFFFDFCDC),
                                     ),
-                          ),
-                        ),
-                        Text(
-                          '   > Issue',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
                               ),
-                        ),
-                        Text(
-                          widget.recordIssue!.ballotID!,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                fontWeight: FontWeight.normal,
+                            ),
+                            Text(
+                              '   > Issue',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                  ),
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CreateArgumentWidget(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                ' >   Create Ad >',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                    ),
                               ),
+                            ),
+                            Text(
+                              '     Quiz >',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                    fontWeight: FontWeight.normal,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                            ),
+                            Text(
+                              '   Create Argument',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          widget.recordIssue!.title!,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                fontWeight: FontWeight.normal,
-                              ),
-                        ),
-                        InkWell(
-                          onTap: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CreateArgumentWidget(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            ' >   Create Ad >',
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            widget.recordIssue!.ballotID!,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBtnText,
+                                      fontWeight: FontWeight.normal,
                                     ),
                           ),
-                        ),
-                        Text(
-                          '     Quiz >',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                fontWeight: FontWeight.normal,
-                                fontStyle: FontStyle.italic,
-                              ),
-                        ),
-                        Text(
-                          '   Create Argument',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                      ],
-                    ),
+                          Text(
+                            widget.recordIssue!.title!,
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 Padding(

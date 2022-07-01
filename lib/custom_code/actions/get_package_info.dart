@@ -14,11 +14,11 @@ Future<String> getPackageInfo() async {
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
   String appName = packageInfo.appName;
-  String packageName = packageInfo.packageName;
+  //String packageName = packageInfo.packageName;
   String version = packageInfo.version;
   String buildNumber = packageInfo.buildNumber;
 
-  String packageString = '$appName $packageName $version $buildNumber';
+  String packageString = '$appName $version $buildNumber';
 
   return packageString;
 }
