@@ -175,7 +175,7 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                                   color: Colors.transparent,
                                   width: 1,
                                 ),
-                                borderRadius: 12,
+                                borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                           ),
@@ -206,7 +206,7 @@ class _ListofAdsWidgetState extends State<ListofAdsWidget> {
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 12,
+                              borderRadius: BorderRadius.circular(12),
                             ),
                           ),
                           Padding(

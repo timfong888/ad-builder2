@@ -257,7 +257,7 @@ class _CreateAdWidgetState extends State<CreateAdWidget> {
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 12,
+                              borderRadius: BorderRadius.circular(12),
                             ),
                           ),
                           if (functions.boolRecQuizExists(widget.recQuiz) ??
@@ -307,7 +307,7 @@ class _CreateAdWidgetState extends State<CreateAdWidget> {
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 12,
+                              borderRadius: BorderRadius.circular(12),
                             ),
                           ),
                           if (functions.boolRecArgExists(widget.recAd) ?? true)

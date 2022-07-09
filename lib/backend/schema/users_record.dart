@@ -30,8 +30,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String? get password;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ref;
-  DocumentReference get reference => ref!;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(UsersRecordBuilder builder) => builder
     ..email = ''

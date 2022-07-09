@@ -26,8 +26,8 @@ abstract class AdsRecord implements Built<AdsRecord, AdsRecordBuilder> {
   bool? get boolActive;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ref;
-  DocumentReference get reference => ref!;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(AdsRecordBuilder builder) => builder
     ..headline = ''
