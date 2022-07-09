@@ -1,3 +1,18 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "issues",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "refCatalog",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "BallotID",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

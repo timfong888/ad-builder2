@@ -27,8 +27,8 @@ abstract class QuizzesRecord
   double? get q2correctAnswerIndex;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ref;
-  DocumentReference get reference => ref!;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(QuizzesRecordBuilder builder) => builder
     ..q1Answers = ListBuilder()

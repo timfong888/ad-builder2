@@ -148,7 +148,7 @@ class _ListIssuesWidgetState extends State<ListIssuesWidget> {
                                   color: Colors.transparent,
                                   width: 1,
                                 ),
-                                borderRadius: 12,
+                                borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                           ),
@@ -237,9 +237,10 @@ class _ListIssuesWidgetState extends State<ListIssuesWidget> {
               Expanded(
                 child: StreamBuilder<List<IssuesRecord>>(
                   stream: queryIssuesRecord(
-                    queryBuilder: (issuesRecord) => issuesRecord.where(
-                        'refCatalog',
-                        isEqualTo: widget.recCatalog!.reference),
+                    queryBuilder: (issuesRecord) => issuesRecord
+                        .where('refCatalog',
+                            isEqualTo: widget.recCatalog!.reference)
+                        .orderBy('BallotID'),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.

@@ -53,7 +53,7 @@ class _ListCatalogWidgetState extends State<ListCatalogWidget> {
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 150, 0),
             child: Text(
               valueOrDefault<String>(
                 FFAppState().localPackageString!,
@@ -65,6 +65,24 @@ class _ListCatalogWidgetState extends State<ListCatalogWidget> {
                     fontSize: 10,
                     fontWeight: FontWeight.w300,
                   ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 150, 0),
+            child: InkWell(
+              onTap: () async {
+                await launchURL(
+                    'https://docs.assembly.digital/deployment-ad-builder');
+              },
+              child: Text(
+                'Deployment Notes',
+                style: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: 'Poppins',
+                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300,
+                    ),
+              ),
             ),
           ),
         ],

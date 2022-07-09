@@ -23,8 +23,8 @@ abstract class CatalogRecord
   DateTime? get modifiedDate;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ref;
-  DocumentReference get reference => ref!;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(CatalogRecordBuilder builder) => builder
     ..title = ''

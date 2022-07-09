@@ -20,7 +20,7 @@ Future<User?> signInOrCreateAccount(
   } on FirebaseAuthException catch (e) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: ${e.message}')),
+      SnackBar(content: Text('Error: ${e.message!}')),
     );
     return null;
   }
@@ -57,7 +57,7 @@ Future resetPassword(
   } on FirebaseAuthException catch (e) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: ${e.message}')),
+      SnackBar(content: Text('Error: ${e.message!}')),
     );
     return null;
   }
@@ -121,7 +121,7 @@ Future beginPhoneAuth({
     },
     verificationFailed: (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Error: ${e.message}'),
+        content: Text('Error: ${e.message!}'),
       ));
     },
     codeSent: (verificationId, _) {
